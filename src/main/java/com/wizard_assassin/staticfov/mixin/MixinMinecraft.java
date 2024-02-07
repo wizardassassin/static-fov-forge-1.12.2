@@ -1,4 +1,4 @@
-package com.yourname.modid.mixin;
+package com.wizard_assassin.staticfov.mixin;
 
 import net.minecraft.client.Minecraft;
 import org.apache.logging.log4j.Logger;
