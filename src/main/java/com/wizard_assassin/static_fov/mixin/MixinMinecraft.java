@@ -1,4 +1,4 @@
-package com.wizard_assassin.staticfov.mixin;
+package com.wizard_assassin.static_fov.mixin;
 
 import net.minecraft.client.Minecraft;
 import org.apache.logging.log4j.Logger;

@@ -1,7 +1,7 @@
 {
     "compatibilityLevel": "JAVA_8",
-    "package": "com.wizard_assassin.staticfov.mixin",
-    "refmap": "refmap.staticfov.json",
+    "package": "com.wizard_assassin.static_fov.mixin",
+    "refmap": "refmap.static-fov.json",
     "mixins": [],
     "client": ["MixinMinecraft"],
     "server": []
