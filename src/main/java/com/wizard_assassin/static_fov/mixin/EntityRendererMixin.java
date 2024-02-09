@@ -4,9 +4,11 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
+
 import org.spongepowered.asm.mixin.injection.At;
 
 import net.minecraft.client.Minecraft;
@@ -37,4 +39,9 @@ public class EntityRendererMixin {
         info.setReturnValue(fov * (1.0f + fovScale * ((60.0F / 70.0F) - 1.0f)));
     }
 
+    @ModifyVariable(method = "setupCameraTransform", at = @At("STORE"), ordinal = 2)
+    private float modifyF1(float f1) {
+        float nauseaScale = 0.0f;
+        return f1 * (nauseaScale * nauseaScale);
+    }
 }
