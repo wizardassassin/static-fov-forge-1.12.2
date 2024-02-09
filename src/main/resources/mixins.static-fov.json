@@ -3,6 +3,6 @@
     "package": "com.wizard_assassin.static_fov.mixin",
     "refmap": "refmap.static-fov.json",
     "mixins": [],
-    "client": ["MixinMinecraft"],
+    "client": ["AbstractClientPlayerMixin", "EntityRendererMixin"],
     "server": []
 }
