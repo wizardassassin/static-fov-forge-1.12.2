@@ -31,7 +31,7 @@ public class EntityRendererMixin {
     }
 
     @Inject(method = "getFOVModifier", at = @At("TAIL"), locals = LocalCapture.CAPTURE_FAILHARD, cancellable = true)
-    private void getFOVModifier(float partialTicks, boolean useFOVSetting, CallbackInfoReturnable<Float> info,
+    private void scaleMaterial(float partialTicks, boolean useFOVSetting, CallbackInfoReturnable<Float> info,
             Entity entity, float f, IBlockState iblockstate) {
         if (iblockstate.getMaterial() != Material.WATER || iblockstate.getMaterial() != Material.LAVA)
             return;
@@ -41,7 +41,7 @@ public class EntityRendererMixin {
     }
 
     @ModifyVariable(method = "setupCameraTransform", at = @At("STORE"), ordinal = 2)
-    private float modifyF1(float f1) {
+    private float modifyNausea(float f1) {
         float nauseaScale = 0.0f;
         return f1 * (nauseaScale * nauseaScale);
     }
