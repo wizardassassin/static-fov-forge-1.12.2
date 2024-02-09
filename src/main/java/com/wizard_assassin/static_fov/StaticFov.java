@@ -13,6 +13,5 @@ public class StaticFov {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        LOGGER.info("Hello world!");
     }
 }
