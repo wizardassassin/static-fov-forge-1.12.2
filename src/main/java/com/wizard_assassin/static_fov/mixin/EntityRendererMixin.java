@@ -8,6 +8,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
+import com.wizard_assassin.static_fov.CustomConfig;
+
 import org.spongepowered.asm.mixin.injection.At;
 
 import net.minecraft.block.material.Material;
@@ -28,21 +30,18 @@ public class EntityRendererMixin {
             Entity entity, float f, IBlockState iblockstate) {
         if (iblockstate.getMaterial() != Material.WATER || iblockstate.getMaterial() != Material.LAVA)
             return;
-        float fovScale = 0.0f;
         float fov = info.getReturnValue();
-        info.setReturnValue(fov * (1.0f + fovScale * ((60.0F / 70.0F) - 1.0f)));
+        info.setReturnValue(fov * (1.0f + CustomConfig.fovScale * ((60.0F / 70.0F) - 1.0f)));
     }
 
     @ModifyVariable(method = "setupCameraTransform", at = @At("STORE"), ordinal = 2)
     private float modifyNausea(float f1) {
-        float nauseaScale = 0.0f;
-        return f1 * (nauseaScale * nauseaScale);
+        return f1 * (CustomConfig.nauseaScale * CustomConfig.nauseaScale);
     }
 
     @ModifyArg(method = "hurtCameraEffect", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/GlStateManager;rotate(FFFF)V", ordinal = 2), index = 0)
     private float modifyTilt(float h) {
-        float tiltScale = 0.0f;
-        return h * tiltScale;
+        return h * CustomConfig.tiltScale;
     }
 
 }
